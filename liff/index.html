@@ -6,6 +6,7 @@
               <script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.1/luivendor.js"></script>
 	<script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.1/lui-orientation-guard.js"></script>
         <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.11.1/sdk.js"></script>
+	    
         <title>liff-real/aa/bb/cc</title>
         <script defer type="text/javascript">
             document.addEventListener("DOMContentLoaded", () => {
@@ -15,18 +16,53 @@
                         withLoginOnExternalBrowser: true, 
                     })
                     .then(() => {
-                                    })
+			const setNodeText = (selector, text) => {
+			  document.querySelector(selector).textContent = text;
+			};
+
+			const handleButtonClicked = (e) => {
+			  console.log(e);
+			  setNodeText('#log', 'button clicked');
+			};
+
+			const manualNavigate = () => {
+			  document.querySelector('lui-navigation-back').navigateBack();
+			};
+		    })
             });
-        
+		
+
+        </script>
         
     </head>
     
     <body>
+    	<lui-navigation-back
+	  disable-auto-navigation
+	  @lui-button-click=${handleButtonClicked}
+	></lui-navigation-back>
+	<div id="log"></div>
+	<button @click=${() => manualNavigate()}>manualNavigation</button>
         <lui-orientation-guard message="スマートフォンを縦にしてご利用ください" style="--lui-orientation-guard-background-color: #fff;
          --lui-orientation-guard-text-color: #999;
          --lui-orientation-guard-icon-color: #d0d0d0;
          --lui-orientation-guard-z-index: 9999;
   "></lui-orientation-guard>
+		
+		  <div class="content" style="padding: 48px 20px; background-color: #eee;">
+    <p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+    <p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+    <p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+    <p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+  </div>
                 <h1>Here is a New Page!!</h1>
             <textarea id="story" name="story" rows="22" cols="50">
                 Terms of Service
