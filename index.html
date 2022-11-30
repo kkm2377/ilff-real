@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-       <script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.1/luivendor.js"></script>
+              <script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.1/luivendor.js"></script>
+	    <script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.0/lui-navigation-back.js"></script>
+	    <script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.0/lui-navigation-bar.js"></script>
 	<script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.1/lui-orientation-guard.js"></script>
-        <title>LIFF-Sample</title>
-<!-- <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
-	    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.11.1/sdk.js"></script>
+        <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/versions/2.11.1/sdk.js"></script>
         <script defer type="text/javascript">
             document.addEventListener("DOMContentLoaded", () => {
                 liff
@@ -16,6 +16,18 @@
                         withLoginOnExternalBrowser: true, 
                     })
                     .then(() => {
+			const setNodeText = (selector, text) => {
+			  document.querySelector(selector).textContent = text;
+			};
+
+			const handleButtonClicked = (e) => {
+			  console.log(e);
+			  setNodeText('#log', 'button clicked');
+			};
+
+			const manualNavigate = () => {
+			  document.querySelector('lui-navigation-back').navigateBack();
+			};
                         document.getElementById('qrcode').addEventListener('click', () => {
                             liff.scanCodeV2().then(result => {
 			    })
@@ -98,7 +110,15 @@
     </head>
     
     <body>
-	    <lui-orientation-guard message="スマートフォンを縦にしてご利用ください" style="--lui-orientation-guard-background-color: #fff;
+	<lui-navigation-bar>
+	  <lui-navigation-back slot="left"></lui-navigation-back>
+	  <span slot="center">very long titleeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+	  <a href="#" slot="right">OK</a>
+	</lui-navigation-bar>
+	    
+	<div id="log"></div>
+	<button @click=${() => manualNavigate()}>manualNavigation</button>
+        <lui-orientation-guard message="スマートフォンを縦にしてご利用ください" style="--lui-orientation-guard-background-color: #fff;
          --lui-orientation-guard-text-color: #999;
          --lui-orientation-guard-icon-color: #d0d0d0;
          --lui-orientation-guard-z-index: 9999;
