@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="jp" dir="ltr">
     <head>
+                      <script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.1/luivendor.js"></script>
+<!-- 	    <script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.0/lui-navigation-back.js"></script> -->
+	    <script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.0/lui-navigation-bar.js"></script>
+	<script type="module" src="https://static.line-scdn.net/lui/edge/versions/1.11.1/lui-orientation-guard.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <title>liff-real/aa/bb/cc</title>
@@ -9,6 +13,11 @@
     </head>
     
     <body>
+        	<lui-navigation-bar>
+<!-- 	  <lui-navigation-back slot="left"></lui-navigation-back> -->
+	  <span slot="center">very long titleeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+	  <a href="#" slot="right">OK</a>
+	</lui-navigation-bar>
                 <h1>Here is a New Page!!</h1>
             <textarea id="story" name="story" rows="22" cols="50">
                 Terms of Service
